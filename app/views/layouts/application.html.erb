@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ng-cribs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <style>
+    table, th , td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+   }
+    table tr:nth-child(odd) {
+     background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+    background-color: #ffffff;
+    }
+   </style>
+  <body ng-app ="ngCribs" ng-controller ="cribsController">
+
+    <!-- Nav Bar -->
+	  <nav class="navbar navbar-default">
+	    <div class="container-fluid">
+	      <div class="navbar-header">
+	        <a class="navbar-brand" href="#">CSE 5335</a>
+	      </div>
+	    </div>
+	  </nav>
+
+
+   <div ng-app ="ngCribs" ng-controller ="cribsController">
+     <div ng-app ="ngCribs" ng-controller ="cribsController">
+
+    <button
+        class="btn btn-primary"
+        ng-click="myFunc()">Click to continue
+     </button>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Country</th>
+  </tr>
+  <tr ng-repeat ="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{x.City}}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+
+</div>
+</div>
+  <!--<div ng-show="showMe">
+    <h1>Menu:</h1>
+    <div>Pizza</div>
+    <div>Pasta</div>
+    <div>Pesce</div>
+</div>-->
+  </body>
+
+
+  <script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src ="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
+  <script src ="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+  <!--<script src ="scripts/cribsFactory.js">
+  </script>-->
+  <script>
+  var app = angular.module('ngCribs',[]);
+      app.controller('cribsController',function($scope,$http){
+       $scope.myFunc = function() {
+       $http.get("customer.php").then(function(response) {
+       $scope.names = response.data.records;
+     });
+   }
+});
+    /*var app = angular.module('ngCribs', []);
+    app.controller('customersCtrl', function($scope, $http) {
+    $http.get("customer.php").then(function(response) {
+        $scope.myData = response.data.records;
+    });
+});*/
+
+  </script>
+</html>
